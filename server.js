@@ -4,6 +4,7 @@ const db = require('./db');
 const Person = require('./module/person');
 const bodyParser = require('body-parser');
 app.use(bodyParser.json());
+require('dotenv').config();
 
 // app.post('/person', async (req, res) => {
 //      const data = req.body;   // Assuming the request body contains the person data
@@ -57,11 +58,15 @@ app.use(bodyParser.json());
 // }
 // );
 
+const PORT= process.env.PORT || 3000;
+
 const personRoutes = require('./routes/personRoutes');
 app.use('/person', personRoutes);
 
 
-app.listen(3000, () => console.log('Server is running on port '));
+
+
+app.listen(PORT, () => console.log('Server is running on port '));
 
 
 
